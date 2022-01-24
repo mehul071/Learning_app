@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-  name: { type: String, required },
-  email: { type: String, required },
-  password: { type: String, required },
-  role: { type: String, required },
+  name: { type: String, require },
+  email: { type: String, require },
+  password: { type: String, require },
+  role: { type: String, require },
 });
 
 const UserModel = mongoose.model("user", userSchema);

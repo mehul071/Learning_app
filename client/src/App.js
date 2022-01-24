@@ -1,20 +1,18 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import "./App.css";
 import Navbar from "./Components/Navbar";
-import StudentScreen from "./Screens/StudentScreen";
-import TeacherScreen from "./Screens/TeacherScreen";
-import Login from "./Screens/Login";
-import StudnetRegister from "./Screens/student/StudentRegister";
-import TeacherRegister from "./Screens/teacher/TeacherRegister";
+import Studentlogin from "./Screens/student/Studentlogin";
+import Teacherlogin from "./Screens/teacher/Teacherlogin";
+import StudnetRegister from "./Screens/student/StudentRegistration";
+import TeacherRegister from "./Screens/teacher/TeacherRegisteration";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <BrowserRouter>
-        <Route path="/teacher" exact component={TeacherScreen} />
-        <Route path="/student" exact component={StudentScreen} />
-        <Route path="/login" exact component={Login} />
+        <Route path="/teacherlogin" exact component={Teacherlogin} />
+        <Route path="/studentlogin" exact component={Studentlogin} />
         <Route path="/Studentregister" exact component={StudnetRegister} />
         <Route path="/Teacherregister" exact component={TeacherRegister} />
       </BrowserRouter>

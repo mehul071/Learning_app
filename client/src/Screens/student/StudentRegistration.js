@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-
 import { useDispatch } from "react-redux";
-import { UserRegister } from "../../Actions/useraction";
+import { StudentRegister } from "../../Actions/useraction";
 import "./register.css";
 
-function StudentRegister() {
+function StudentRegistration() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +20,7 @@ function StudentRegister() {
         password: password,
         role: "student",
       };
-      dispatch(UserRegister(user));
+      dispatch(StudentRegister(user));
     }
   }
   return (
@@ -77,4 +76,4 @@ function StudentRegister() {
   );
 }
 
-export default StudentRegister;
+export default StudentRegistration;

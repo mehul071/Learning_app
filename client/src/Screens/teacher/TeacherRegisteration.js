@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { UserRegister } from "../../Actions/useraction";
+import { TeacherRegister } from "../../Actions/useraction";
 
-function TeacherRegister() {
+function TeacherRegisteration() {
   const [teachername, setName] = useState("");
   const [teacheremail, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +19,8 @@ function TeacherRegister() {
         password: password,
         role: "teacher",
       };
-      dispatch(UserRegister(user));
+      console.log(user);
+      dispatch(TeacherRegister(user));
     }
   }
   return (
@@ -75,4 +76,4 @@ function TeacherRegister() {
   );
 }
 
-export default TeacherRegister;
+export default TeacherRegisteration;
