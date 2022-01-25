@@ -4,19 +4,27 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { RegisterUserReducer } from "./Reducers/registerreducer";
 import { loginUserReducer } from "./Reducers/loginreducer";
-import { AddcourseReducer } from "./Reducers/coursereducer";
+import { AddcourseReducer, getcourseReducer } from "./Reducers/coursereducer";
 
 const FinalReducer = combineReducers({
   RegisterUserReducer: RegisterUserReducer,
   loginUserReducer: loginUserReducer,
   AddcourseReducer: AddcourseReducer,
+  getcourseReducer: getcourseReducer,
 });
+
+const courses = localStorage.getItem("courses")
+  ? JSON.parse(localStorage.getItem("courses"))
+  : [];
 
 const current_user = localStorage.getItem("current_user")
   ? JSON.parse(localStorage.getItem("current_user"))
   : null;
 
 const initialState = {
+  getcourseReducer: {
+    courses: courses,
+  },
   loginUserReducer: {
     current_user: current_user,
   },

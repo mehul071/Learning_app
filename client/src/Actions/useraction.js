@@ -15,7 +15,7 @@ export const TeacherLogin = (user) => async (dispatch) => {
   dispatch({ type: "USER_LOGIN_REQUEST" });
   try {
     const response = await axios.post("/api/users/teacherlogin", user);
-    dispatch({ type: "USER_LOGIN_SUCCESS", payload: response.data });
+    dispatch({ type: "USER_LOGIN_SUCCESS" });
     window.location.href = "/teacherscreen";
     localStorage.setItem("current_user", JSON.stringify(response.data));
   } catch (error) {
@@ -25,7 +25,7 @@ export const TeacherLogin = (user) => async (dispatch) => {
 export const TeacherRegister = (user) => async (dispatch) => {
   dispatch({ type: "USER_REGISTER_REQUEST" });
   try {
-    axios.post("/api/users/teacherregister", user);
+    const response = axios.post("/api/users/teacherregister", user);
     dispatch({ type: "USER_REGISTER_SUCCESS" });
     window.location.href = "/teacherscreen";
   } catch (error) {

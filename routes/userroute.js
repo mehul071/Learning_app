@@ -13,7 +13,7 @@ router.post("/studentregister", (req, res) => {
   }
 });
 
-router.post("/teacherregiste", (req, res) => {
+router.post("/teacherregister", (req, res) => {
   const { name, email, password, role } = req.body;
   const NewUser = new User({ name, email, password, role });
   try {

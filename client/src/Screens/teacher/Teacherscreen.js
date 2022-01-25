@@ -1,42 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Table from "react-bootstrap/Table";
-import {useSelector} from 'react-redux'
+import { getallcourse } from "../../Actions/courseaction";
 
 function Teacherscreen() {
-  const course = useSelector(state)=>state.getcourseReducer)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getallcourse());
+  }, []);
+  const courseState = useSelector((state) => state.getcourseReducer);
+  const { courses } = courseState;
+
+  console.log(courses);
   return (
-    <div className="">
-      <div>
+    <div className="mt-4">
+      <div className="px-6">
         <Table striped bordered hover>
-          {courses.map((course)=>{
-            return<Courses course = {course}/>
-          })}
           <thead>
             <tr>
-              <th>#</th>
               <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Description</th>
+              <th>Created By</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td colSpan={2}>Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {courses &&
+              courses.map((course) => {
+                return (
+                  <tr key={courses.course_id}>
+                    <td>{course.course_name}</td>
+                    <td>{course.description}</td>
+                    <td>{course.made_by}</td>
+                    <td></td>
+                  </tr>
+                );
+              })}
           </tbody>
         </Table>
       </div>
