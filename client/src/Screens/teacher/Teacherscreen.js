@@ -27,6 +27,7 @@ function Teacherscreen() {
               <th>First Name</th>
               <th>Description</th>
               <th>Created By</th>
+              <th>Quiz</th>
               <th>Edit</th>
             </tr>
           </thead>
@@ -38,13 +39,11 @@ function Teacherscreen() {
                     <td>{course.course_name}</td>
                     <td>{course.description}</td>
                     <td>{course.made_by}</td>
+                    <td>Empty</td>
                     <td>
-                      <div className="flex">
+                      <div className="flex ">
                         <a href={`/editcourse/${course.course_id}`}>
                           <FiEdit />
-                        </a>
-                        <a>
-                          <BsFillTrashFill />
                         </a>
                       </div>
                     </td>

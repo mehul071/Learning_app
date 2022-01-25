@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { BsFillTrashFill } from "react-icons/bs";
+import Button from "react-bootstrap/Button";
 import { useParams } from "react-router-dom";
 
 function Editcoursescreen() {
@@ -8,10 +10,7 @@ function Editcoursescreen() {
   const [description, setDescription] = useState("");
 
   var courseId = useParams();
-  console.log(courseId);
-  JSON.stringify(courseId);
   useEffect(() => {
-    var id = courseId.course_id;
     async function fetchByid() {
       try {
         const response = await axios.post("/api/course/getbyid", {
@@ -21,12 +20,12 @@ function Editcoursescreen() {
         setCourseName(response.data.course_name);
         setDescription(response.data.description);
       } catch (error) {
-        alert("error occured in fetching" + error);
+        console.log("error occured in fetching" + error);
       }
     }
 
     fetchByid();
-  }, []);
+  });
   async function handleEdit() {
     if (course_name === "" || description === "") {
       alert("Enter the course Name and details");
@@ -43,9 +42,18 @@ function Editcoursescreen() {
       }
     }
   }
+  async function RemoveCourse() {
+    try {
+      const response = await axios.post("/api/course/delete", { id: courseId });
+      window.location.href = "/teacherscreen";
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
-    <div>
-      <div className="flex flex-col px-4">
+    <div className="flex justify-center mt-16">
+      <div className="flex flex-col px-4 justify-center text-center border-2 ">
         <h1>Edit</h1>
         <label className="mb-2">Course Name:</label>
         <input
@@ -61,17 +69,25 @@ function Editcoursescreen() {
         />
         <label className="mb-2">Course Description</label>
         <textarea
-          className="border-2 "
+          className="border-2 px-2 py-2 "
           value={description}
           name="description"
           onChange={(e) => {
             setDescription(e.target.value);
           }}
         ></textarea>
-        <button className="border-2 mt-4" onClick={handleEdit}>
-          Update course
-        </button>
-        <button className="border-2 mt-4">Delete Course</button>
+        <div className="flex">
+          <Button
+            className="border-2 mt-4 w-40"
+            variant="info"
+            onClick={handleEdit}
+          >
+            Update course
+          </Button>
+          <button onClick={RemoveCourse}>
+            <BsFillTrashFill />
+          </button>
+        </div>
       </div>
     </div>
   );

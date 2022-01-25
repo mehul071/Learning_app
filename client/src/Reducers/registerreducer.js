@@ -14,6 +14,7 @@ export const RegisterUserReducer = (state = {}, action) => {
       return {
         loading: false,
         success: true,
+        current_user: action.payload,
       };
     default:
       return state;

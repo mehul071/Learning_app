@@ -57,4 +57,13 @@ router.post("/update", async (req, res) => {
   }
 });
 
+router.post("/delete", async (req, res) => {
+  var course_id = req.body.id.courseid;
+  try {
+    const response = await Newcourse.remove({ course_id });
+    res.send("Course Deleted");
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
 module.exports = router;

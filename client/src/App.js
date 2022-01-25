@@ -7,7 +7,8 @@ import TeacherRegister from "./Screens/teacher/TeacherRegisteration";
 import TeacherScreen from "./Screens/teacher/Teacherscreen";
 import StudentScreen from "./Screens/student/Studentscreen";
 import AddCourse from "./Screens/teacher/Addcourse";
-import EditCourse from "./Screens/student/Editcoursescreen";
+import EditCourse from "./Screens/teacher/Editcoursescreen";
+import HomeScreen from "./Screens/HomeScreen";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -16,6 +17,7 @@ function App() {
     <div className="App">
       <Navbar />
       <BrowserRouter>
+        <Route path="/home" exact component={HomeScreen} />
         <Route path="/teacherlogin" exact component={Teacherlogin} />
         <Route path="/studentlogin" exact component={Studentlogin} />
         <Route path="/Studentregister" exact component={StudnetRegister} />
