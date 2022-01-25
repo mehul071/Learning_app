@@ -1,11 +1,14 @@
 const express = require("express");
 const db = require("./db");
-const userRoute = require("./routes/userroute");
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const courseRoute = require("./routes/courseroute");
+const userRoute = require("./routes/userroute");
+
+app.use("/api/", courseRoute);
 app.use("/api/users/", userRoute);
 
 app.get("/", (req, res) => {

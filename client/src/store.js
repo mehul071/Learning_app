@@ -4,10 +4,12 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { RegisterUserReducer } from "./Reducers/registerreducer";
 import { loginUserReducer } from "./Reducers/loginreducer";
+import { AddcourseReducer } from "./Reducers/coursereducer";
 
 const FinalReducer = combineReducers({
   RegisterUserReducer: RegisterUserReducer,
   loginUserReducer: loginUserReducer,
+  AddcourseReducer: AddcourseReducer,
 });
 
 const current_user = localStorage.getItem("current_user")

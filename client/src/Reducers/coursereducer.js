@@ -1,20 +1,21 @@
-export const loginUserReducer = (state = {}, action) => {
+export const courseReducer = (state = {}, action) => {
   switch (action.type) {
-    case "USER_LOGIN_REQUEST":
+    case "NEW_COURSE_REQUEST":
       return {
         loading: true,
         ...state,
       };
-    case "USER_LOGIN_FAILED":
+    case "NEW_COURSE_FAILED":
       return {
         loading: false,
         error: action.payload,
       };
-    case "USER_LOGIN_SUCCESS":
+    case "NEW_COURSE_SUCCESS":
       return {
         loading: false,
         success: true,
       };
+
     default:
       return state;
   }

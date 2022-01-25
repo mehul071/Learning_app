@@ -12,7 +12,7 @@ export const RegisterUserReducer = (state = {}, action) => {
       };
     case "USER_REGISTER_SUCCESS":
       return {
-        loadin: false,
+        loading: false,
         success: true,
       };
     default:
