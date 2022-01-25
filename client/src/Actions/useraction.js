@@ -1,25 +1,25 @@
 import axios from "axios";
 
 export const StudentLogin = (user) => async (dispatch) => {
-  dispatch({ type: "USER_LOGIN_REQUEST" });
+  dispatch({ type: "STUDENT_LOGIN_REQUEST" });
   try {
     const response = await axios.post("/api/users/studentlogin", user);
-    dispatch({ type: "USER_LOGIN_SUCCESS", payload: response.data });
+    dispatch({ type: "STUDENT_LOGIN_SUCCESS", payload: response.data });
     localStorage.setItem("current_user", JSON.stringify(response.data));
     window.location.href = "/studentscreen";
   } catch (error) {
-    dispatch({ type: "USER_LOGIN_FAILED", payload: error });
+    dispatch({ type: "STUDENT_LOGIN_FAILED", payload: error });
   }
 };
 export const TeacherLogin = (user) => async (dispatch) => {
-  dispatch({ type: "USER_LOGIN_REQUEST" });
+  dispatch({ type: "TEACHER_LOGIN_REQUEST" });
   try {
     const response = await axios.post("/api/users/teacherlogin", user);
-    dispatch({ type: "USER_LOGIN_SUCCESS" });
+    dispatch({ type: "TEACHER_LOGIN_SUCCESS" });
     window.location.href = "/teacherscreen";
     localStorage.setItem("current_user", JSON.stringify(response.data));
   } catch (error) {
-    dispatch({ type: "USER_LOGIN_FAILED", payload: error });
+    dispatch({ type: "TEACHER_LOGIN_FAILED", payload: error });
   }
 };
 export const TeacherRegister = (user) => async (dispatch) => {

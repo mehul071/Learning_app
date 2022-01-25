@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Table from "react-bootstrap/Table";
 import { getallcourse } from "../../Actions/courseaction";
+import { FiEdit } from "react-icons/fi";
 
 function Teacherscreen() {
   const dispatch = useDispatch();
@@ -10,12 +11,16 @@ function Teacherscreen() {
   }, []);
   const courseState = useSelector((state) => state.getcourseReducer);
   const { courses } = courseState;
+  function DeleteCourse(id) {
+    console.log(id);
+    // dispatch(DeleteCourse());
+  }
 
   console.log(courses);
   return (
     <div className="mt-4">
-      <div className="px-6">
-        <Table striped bordered hover>
+      <div className="px-12">
+        <Table hover>
           <thead>
             <tr>
               <th>First Name</th>
@@ -32,7 +37,11 @@ function Teacherscreen() {
                     <td>{course.course_name}</td>
                     <td>{course.description}</td>
                     <td>{course.made_by}</td>
-                    <td></td>
+                    <td>
+                      <a href={`/editcourse/${course.course_id}`}>
+                        <FiEdit />
+                      </a>
+                    </td>
                   </tr>
                 );
               })}

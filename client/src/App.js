@@ -7,6 +7,7 @@ import TeacherRegister from "./Screens/teacher/TeacherRegisteration";
 import TeacherScreen from "./Screens/teacher/Teacherscreen";
 import StudentScreen from "./Screens/student/Studentscreen";
 import AddCourse from "./Screens/teacher/Addcourse";
+import EditCourse from "./Screens/student/Editcoursescreen";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/studentscreen" exact component={StudentScreen} />
         <Route path="/teacherscreen" exact component={TeacherScreen} />
         <Route path="/addcourse" exact component={AddCourse} />
+        <Route path="/editcourse/:courseid" exact component={EditCourse} />
       </BrowserRouter>
     </div>
   );

@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 const courseRoute = require("./routes/courseroute");
 const userRoute = require("./routes/userroute");
 
-app.use("/api/users/", courseRoute);
+app.use("/api/course/", courseRoute);
 app.use("/api/users/", userRoute);
 
 app.get("/", (req, res) => {

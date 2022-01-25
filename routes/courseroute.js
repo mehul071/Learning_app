@@ -24,7 +24,32 @@ router.get("/getallcourses", async (req, res) => {
     const courses = await Newcourse.find({});
     res.send(courses);
   } catch (error) {
-    return res.send(400).json({ message: error });
+    return res.status(400).json({ message: error });
+  }
+});
+
+router.post("/getbyid", async (req, res) => {
+  var course_id = req.body.id.courseid;
+  try {
+    const course = await Newcourse.findOne({ course_id });
+    res.send(course);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+router.post("/update", async (req, res) => {
+  const { course_name, description } = req.body;
+  var course_id = req.body.id.courseid;
+  console.log(course_id);
+  try {
+    const response = await Newcourse.findAndModify({
+      course_name,
+      description,
+      course_id,
+    });
+    res.send("Successfully updated");
+  } catch (error) {
+    res.status(400).json({ message: error });
   }
 });
 
