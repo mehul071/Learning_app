@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Table from "react-bootstrap/Table";
 import { getallcourse } from "../../Actions/courseaction";
 import { FiEdit } from "react-icons/fi";
+import { BsFillTrashFill } from "react-icons/bs";
 
 function Teacherscreen() {
   const dispatch = useDispatch();
@@ -38,9 +39,14 @@ function Teacherscreen() {
                     <td>{course.description}</td>
                     <td>{course.made_by}</td>
                     <td>
-                      <a href={`/editcourse/${course.course_id}`}>
-                        <FiEdit />
-                      </a>
+                      <div className="flex">
+                        <a href={`/editcourse/${course.course_id}`}>
+                          <FiEdit />
+                        </a>
+                        <a>
+                          <BsFillTrashFill />
+                        </a>
+                      </div>
                     </td>
                   </tr>
                 );

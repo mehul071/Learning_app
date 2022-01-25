@@ -9,7 +9,9 @@ function Editcoursescreen() {
 
   var courseId = useParams();
   console.log(courseId);
+  JSON.stringify(courseId);
   useEffect(() => {
+    var id = courseId.course_id;
     async function fetchByid() {
       try {
         const response = await axios.post("/api/course/getbyid", {
@@ -26,17 +28,19 @@ function Editcoursescreen() {
     fetchByid();
   }, []);
   async function handleEdit() {
-    try {
-      console.log(course_name, description, courseId);
-      const response = await axios.post(
-        "/api/course/update",
-        course_name,
-        description,
-        { id: courseId }
-      );
-      console.log(response);
-    } catch (error) {
-      alert("error is coming" + error);
+    if (course_name === "" || description === "") {
+      alert("Enter the course Name and details");
+    } else {
+      try {
+        console.log(course_name, description, courseId);
+        const response = await axios.post("/api/course/update", {
+          id: courseId,
+          course_name,
+          description,
+        });
+      } catch (error) {
+        console.log("error is coming" + error);
+      }
     }
   }
   return (
@@ -48,6 +52,7 @@ function Editcoursescreen() {
           placeholder="Course Name"
           className="border-2 px-2 py-2"
           required
+          name="course"
           value={course_name}
           onChange={(e) => {
             setCourseName(e.target.value);
@@ -58,13 +63,15 @@ function Editcoursescreen() {
         <textarea
           className="border-2 "
           value={description}
+          name="description"
           onChange={(e) => {
             setDescription(e.target.value);
           }}
         ></textarea>
-        <button className="border-2" onClick={handleEdit}>
+        <button className="border-2 mt-4" onClick={handleEdit}>
           Update course
         </button>
+        <button className="border-2 mt-4">Delete Course</button>
       </div>
     </div>
   );
