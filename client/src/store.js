@@ -5,12 +5,14 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { RegisterUserReducer } from "./Reducers/registerreducer";
 import { loginUserReducer } from "./Reducers/loginreducer";
 import { AddcourseReducer, getcourseReducer } from "./Reducers/coursereducer";
+import { addquestionreducer } from "./Reducers/quizreducer";
 
 const FinalReducer = combineReducers({
   RegisterUserReducer: RegisterUserReducer,
   loginUserReducer: loginUserReducer,
   AddcourseReducer: AddcourseReducer,
   getcourseReducer: getcourseReducer,
+  addquestionreducer: addquestionreducer,
 });
 
 const courses = localStorage.getItem("courses")

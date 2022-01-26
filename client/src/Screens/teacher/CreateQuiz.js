@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Alert, Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { addquestions } from "../../Actions/quizaction";
 import { useParams } from "react-router-dom";
-import { set } from "mongoose";
 const { v4: uuidv4 } = require("uuid");
 
 function CreateQuiz() {
@@ -16,12 +16,14 @@ function CreateQuiz() {
   const [option4, setOption4] = useState("");
   const [option5, setOption5] = useState("");
   const [answer1, setAnswer1] = useState("");
+  const [marks, setMarks] = useState("");
   const [quizName, setQuizName] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
   var id = useParams();
+  var quiz__id;
   async function addquestion() {
     if (
       option1 === "" ||
@@ -33,22 +35,28 @@ function CreateQuiz() {
     ) {
       alert("Enter your options and answer correctly");
     } else {
+      var questionId = uuidv4();
+      console.log(id);
       var question = {
         question: question,
+        questionId,
+        quizId: quiz__id,
+        marks: marks,
         option1: option1,
         option2: option2,
         option3: option3,
         option4: option4,
         option5: option5,
-        answer1: answer1,
+        answer: answer1,
+        id,
       };
-      dispatch(addquestion(question));
+      dispatch(addquestions(question));
     }
   }
+
   async function CreateQuiz() {
     try {
       var quizid = uuidv4();
-      console.log(id);
       const response = await axios.post("/api/quiz/createquiz", {
         id,
         quiz_id: quizid,
@@ -60,15 +68,28 @@ function CreateQuiz() {
       console.log(error);
     }
   }
+  async function getquizid() {
+    console.log(id);
+    try {
+      const response = await axios.post("/api/quiz/getquizid", { id });
+      quiz__id = response.data[0].quiz_id;
+    } catch (error) {
+      console.log(error);
+    }
+  }
   function showquiz() {
     setShowQuizModal(true);
   }
   function closequizmodal() {
     setShowQuizModal(false);
   }
-  function callfunctions() {
+  function callcreatequizfunctions() {
     CreateQuiz();
     closequizmodal();
+  }
+  async function callquestionfunctions() {
+    await getquizid();
+    addquestion();
   }
   return (
     <div className="flex flex-col justify-center">
@@ -95,7 +116,7 @@ function CreateQuiz() {
             />
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={callfunctions}>
+            <Button variant="primary" onClick={callcreatequizfunctions}>
               Add New Quiz
             </Button>
             <Button onClick={closequizmodal}>Close</Button>
@@ -120,7 +141,7 @@ function CreateQuiz() {
                 className="border-2 mb-2 px-2 py-1"
                 value={question}
                 onChange={(e) => {
-                  setOption1(e.target.value);
+                  setQuestion(e.target.value);
                 }}
               />
               <input
@@ -177,13 +198,22 @@ function CreateQuiz() {
                   setAnswer1(e.target.value);
                 }}
               />
+              <input
+                name="marks"
+                value={marks}
+                className="border-2 mb-2 px-2 py-1"
+                placeholder="Marks"
+                onChange={(e) => {
+                  setMarks(e.target.value);
+                }}
+              />
             </Modal.Body>
           </div>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={addquestion}>
+            <Button variant="primary" onClick={callquestionfunctions}>
               AddQuestion
             </Button>
           </Modal.Footer>

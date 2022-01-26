@@ -13,10 +13,6 @@ function Teacherscreen() {
   }, []);
   const courseState = useSelector((state) => state.getcourseReducer);
   const { courses } = courseState;
-  function DeleteCourse(id) {
-    console.log(id);
-    // dispatch(DeleteCourse());
-  }
 
   console.log(courses);
   return (

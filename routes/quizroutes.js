@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const quiz = require("../model/quiz");
+const question = require("../model/question");
 
 router.post("/createquiz", async (req, res) => {
   const { quiz_id, Quizname } = req.body;
@@ -14,6 +15,14 @@ router.post("/createquiz", async (req, res) => {
   }
 });
 
-router.post("/addquestion", async (req, res) => {});
+router.post("/getquizid", async (req, res) => {
+  var course_id = req.body.id.courseid;
+  try {
+    const quiz_id = await quiz.find({ course_id });
+    res.send(quiz_id);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
 
 module.exports = router;

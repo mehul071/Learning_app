@@ -5,10 +5,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const questionRoute = require("./routes/questionroute");
 const courseRoute = require("./routes/courseroute");
 const userRoute = require("./routes/userroute");
 const quizRoute = require("./routes/quizroutes");
 
+app.use("/api/question/", questionRoute);
 app.use("/api/quiz/", quizRoute);
 app.use("/api/course/", courseRoute);
 app.use("/api/users/", userRoute);
