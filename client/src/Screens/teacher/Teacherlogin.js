@@ -17,7 +17,7 @@ function Teacherlogin() {
     dispatch(TeacherLogin(user));
   }
   return (
-    <div className="login flex justify-center text-center py-8">
+    <div className="login flex justify-center text-center py-8 ">
       <div className="auth-options flex flex-col border-2 px-6 py-6 box ">
         <h1 className="heading mb-4">Teacher Sign in.</h1>
         <FloatingLabel

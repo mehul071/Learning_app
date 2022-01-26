@@ -38,7 +38,9 @@ function Studentscreen() {
                     <td>{course.course_name}</td>
                     <td>{course.description}</td>
                     <td>{course.made_by}</td>
-                    <td>quiz</td>
+                    <td>
+                      <a href={`/studentquiz/${course.course_id}`}>Take Quiz</a>
+                    </td>
                   </tr>
                 );
               })}

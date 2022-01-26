@@ -98,10 +98,9 @@ function CreateQuiz() {
     addquestion();
   }
   return (
-    <div className="flex flex-col justify-center">
-      <div className="flex justify-content-between">
-        <h1>Quiz</h1>
-        {/* {loading && <h1>Loading</h1>} */}
+    <div className="">
+      <div className="">
+        <h1 className="text-center">Quiz</h1>
         <div>
           <Button onClick={showquiz}>Create Quiz</Button>
           <Modal

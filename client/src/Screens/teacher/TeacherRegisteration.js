@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { TeacherRegister } from "../../Actions/useraction";
+import { Button, FloatingLabel, Form } from "react-bootstrap";
 
 function TeacherRegisteration() {
   const [teachername, setName] = useState("");
@@ -28,28 +29,32 @@ function TeacherRegisteration() {
   }
   return (
     <div className="register flex text-center justify-center py-8">
-      <div className="box flex flex-col border-2 border-rose-500 px-8">
-        <h1 className="text-3xl mb-3">Teacher Register</h1>
-        <input
-          type="name"
-          placeholder="Name"
-          className="register_name mb-4 py-1 px-2 entry"
-          value={teachername}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <input
-          type="email"
-          placeholder="Enter Email"
-          className="register_email mb-4 py-1 px-2 entry"
-          value={teacheremail}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          required
-        />
-        <input
+      <div className="box flex flex-col px-12 mt-2">
+        <h1 className="text-3xl mb-3 mt-4">Teacher Register</h1>
+        <FloatingLabel contolId="floatingInput" label="Name">
+          <Form.Control
+            type="name"
+            placeholder="Name"
+            className="register_name mb-4 "
+            value={teachername}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </FloatingLabel>
+        <FloatingLabel contolId="floatingInput" label="Email address">
+          <Form.Control
+            type="email"
+            placeholder="Enter Email"
+            className="register_email mb-4 "
+            value={teacheremail}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            required
+          />
+        </FloatingLabel>
+        <Form.Control
           type="password"
           placeholder="Enter Password"
           className="register_password mb-4 py-1 px-2 entry"
@@ -59,7 +64,7 @@ function TeacherRegisteration() {
             setPassword(e.target.value);
           }}
         />
-        <input
+        <Form.Control
           type="password"
           placeholder="Confirm Password"
           className="input_confirmpass mb-4 py-1 px-2 entry"
@@ -68,12 +73,12 @@ function TeacherRegisteration() {
             setconfirmPass(e.target.value);
           }}
         />
-        <button className="signin_btn border" onClick={registerUser}>
+        <Button className="signin_btn border" onClick={registerUser}>
           Register
-        </button>
-        <h1 className="mt-2 redirect_login hover:underline mb-2">
+        </Button>
+        <p className="mt-2 redirect_login hover:underline mb-2">
           <a href="/login">Back to Login</a>
-        </h1>
+        </p>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ function Teacherscreen() {
   return (
     <div className="mt-4">
       <div className="px-12">
-        <Table hover>
+        <Table hover className="box">
           <thead>
             <tr>
               <th>First Name</th>

@@ -19,7 +19,7 @@ function Nav() {
   }
   const UserState = useSelector((state) => state.loginUserReducer);
   const { current_user } = UserState;
-  // console.log(current_user.name);
+
   useEffect(() => {
     if (current_user != null) {
       if (current_user.role === "student") {
@@ -31,7 +31,7 @@ function Nav() {
   });
 
   return (
-    <div className="Navbar h-14 nav-color flex">
+    <div className="Navbar h-14 nav-color flex ">
       <div className="Nav flex mt-2 flex-1">
         <navlink.Link
           className="cursor-pointer text-white text-md "
