@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../modules/usermodule");
+const User = require("../model/usermodule");
 
 router.post("/studentregister", (req, res) => {
   const { name, email, password, role } = req.body;

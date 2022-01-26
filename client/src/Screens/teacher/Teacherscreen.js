@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import { getallcourse } from "../../Actions/courseaction";
 import { FiEdit } from "react-icons/fi";
 import { BsFillTrashFill } from "react-icons/bs";
+import { IoCreate } from "react-icons/io5";
 
 function Teacherscreen() {
   const dispatch = useDispatch();
@@ -39,7 +40,12 @@ function Teacherscreen() {
                     <td>{course.course_name}</td>
                     <td>{course.description}</td>
                     <td>{course.made_by}</td>
-                    <td>Empty</td>
+                    <div className="flex items-center cursor-pointer">
+                      <span className="items-center">Create</span>
+                      <a href={`/quiz/${course.course_id}`}>
+                        <IoCreate />
+                      </a>
+                    </div>
                     <td>
                       <div className="flex ">
                         <a href={`/editcourse/${course.course_id}`}>

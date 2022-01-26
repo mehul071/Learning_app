@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Newcourse = require("../modules/course.js");
+const Newcourse = require("../model/course.js");
 const { v4: uuidv4 } = require("uuid");
 
 router.post("/addcourse", (req, res) => {
