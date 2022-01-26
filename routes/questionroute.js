@@ -12,7 +12,6 @@ router.post("/addquestion", (req, res) => {
     option2,
     option3,
     option4,
-    option5,
     answer,
   } = req.body;
   var course_id = req.body.id.courseid;
@@ -26,7 +25,6 @@ router.post("/addquestion", (req, res) => {
     option2,
     option3,
     option4,
-    option5,
     answer,
     course_id,
   });
@@ -38,4 +36,14 @@ router.post("/addquestion", (req, res) => {
   }
 });
 
+router.post("/getallquestions", async (req, res) => {
+  var course_id = req.body.id.courseid;
+  console.log(course_id);
+  try {
+    const response = await NewQuestion.find({ course_id: course_id });
+    res.send(response);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
 module.exports = router;

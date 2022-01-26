@@ -1,8 +1,8 @@
 a{
-    color:black !important;
+    /* color:black !important; */
 }
-.dropdown{
-    display: none;
+.nav-color{
+    background-color:#1F2937;
 }
 @media screen and (max-width:700px)
 {
@@ -10,16 +10,16 @@ a{
         display:flex;
         text-align: end;
     }
-    .teacher-route{
+    /* .teacher-route{
         display: none !important;
-    }
-    .student-route{
+    } */
+    /* .student-route{
         display: none !important;
-    }
-    .add-course{
+    } */
+    /* .add-course{
         display: none !important;
-    }
-    .logout{
+    } */
+    /* .logout{
         display: none !important;
-    }
+    } */
 }

@@ -10,6 +10,7 @@ import AddCourse from "./Screens/teacher/Addcourse";
 import EditCourse from "./Screens/teacher/Editcoursescreen";
 import HomeScreen from "./Screens/HomeScreen";
 import Quiz from "./Screens/teacher/CreateQuiz";
+import Fotter from "./Components/Fotter";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/editcourse/:courseid" exact component={EditCourse} />
         <Route path="/quiz/:courseid" exact component={Quiz} />
       </BrowserRouter>
+      <Fotter />
     </div>
   );
 }

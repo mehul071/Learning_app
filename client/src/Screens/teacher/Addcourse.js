@@ -20,7 +20,6 @@ function Addcourse() {
 
   return (
     <div>
-      {/* <form> */}
       <div className="flex flex-col px-4">
         <h1>Add course</h1>
 

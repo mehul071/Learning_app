@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Alert, Button, Modal } from "react-bootstrap";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { getallcourse } from "../../Actions/courseaction";
+import { useDispatch, useSelector } from "react-redux";
 import { addquestions } from "../../Actions/quizaction";
 import { useParams } from "react-router-dom";
+import ShowQuestions from "../../Components/ShowQuestions";
 const { v4: uuidv4 } = require("uuid");
 
 function CreateQuiz() {
@@ -14,7 +16,6 @@ function CreateQuiz() {
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
   const [option4, setOption4] = useState("");
-  const [option5, setOption5] = useState("");
   const [answer1, setAnswer1] = useState("");
   const [marks, setMarks] = useState("");
   const [quizName, setQuizName] = useState("");
@@ -22,6 +23,13 @@ function CreateQuiz() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getallcourse());
+  }, []);
+  const courseState = useSelector((state) => state.getcourseReducer);
+  const { courses, loading, success } = courseState;
+  //   console.log(courses);
   var id = useParams();
   var quiz__id;
   async function addquestion() {
@@ -30,7 +38,6 @@ function CreateQuiz() {
       option2 === "" ||
       option3 === "" ||
       option4 === "" ||
-      option5 === "" ||
       answer1 === ""
     ) {
       alert("Enter your options and answer correctly");
@@ -46,7 +53,6 @@ function CreateQuiz() {
         option2: option2,
         option3: option3,
         option4: option4,
-        option5: option5,
         answer: answer1,
         id,
       };
@@ -95,36 +101,38 @@ function CreateQuiz() {
     <div className="flex flex-col justify-center">
       <div className="flex justify-content-between">
         <h1>Quiz</h1>
-        <Button onClick={showquiz}>Create Quiz</Button>
-        <Modal
-          show={showquizmodal}
-          onHide={closequizmodal}
-          backdrop="static"
-          keyboard={false}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Add quiz</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <input
-              placeholder="Enter Quiz name"
-              value={quizName}
-              className="border-2"
-              onChange={(e) => {
-                setQuizName(e.target.value);
-              }}
-            />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={callcreatequizfunctions}>
-              Add New Quiz
-            </Button>
-            <Button onClick={closequizmodal}>Close</Button>
-          </Modal.Footer>
-        </Modal>
+        {/* {loading && <h1>Loading</h1>} */}
+        <div>
+          <Button onClick={showquiz}>Create Quiz</Button>
+          <Modal
+            show={showquizmodal}
+            onHide={closequizmodal}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Add quiz</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <input
+                placeholder="Enter Quiz name"
+                value={quizName}
+                className="border-2"
+                onChange={(e) => {
+                  setQuizName(e.target.value);
+                }}
+              />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={callcreatequizfunctions}>
+                Add New Quiz
+              </Button>
+              <Button onClick={closequizmodal}>Close</Button>
+            </Modal.Footer>
+          </Modal>
+          <Button onClick={handleShow}>Add Question</Button>
+        </div>
 
-        {/* ///////////////////////////////// */}
-        <Button onClick={handleShow}>Add Question</Button>
         <Modal
           show={show}
           onHide={handleClose}
@@ -181,15 +189,6 @@ function CreateQuiz() {
                 }}
               />
               <input
-                name="option5"
-                value={option5}
-                className="border-2 mb-2 px-2 py-1"
-                placeholder="Enter your option 5"
-                onChange={(e) => {
-                  setOption5(e.target.value);
-                }}
-              />
-              <input
                 name="answer1"
                 value={answer1}
                 className="border-2 mb-2 px-2 py-1"
@@ -219,6 +218,7 @@ function CreateQuiz() {
           </Modal.Footer>
         </Modal>
       </div>
+      <ShowQuestions id={id} />
     </div>
   );
 }

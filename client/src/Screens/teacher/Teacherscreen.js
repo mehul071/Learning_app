@@ -14,7 +14,6 @@ function Teacherscreen() {
   const courseState = useSelector((state) => state.getcourseReducer);
   const { courses } = courseState;
 
-  console.log(courses);
   return (
     <div className="mt-4">
       <div className="px-12">
@@ -42,6 +41,7 @@ function Teacherscreen() {
                         <IoCreate />
                       </a>
                     </div>
+
                     <td>
                       <div className="flex ">
                         <a href={`/editcourse/${course.course_id}`}>

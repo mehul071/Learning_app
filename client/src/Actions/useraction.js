@@ -48,6 +48,6 @@ export const StudentRegister = (user) => async (dispatch) => {
 export const logoutuser = () => (dispatch) => {
   if (localStorage.getItem("current_user")) {
     localStorage.removeItem("current_user");
-    window.location.href = "/home";
+    window.location.href = "/teacherlogin";
   }
 };

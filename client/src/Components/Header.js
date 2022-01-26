@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutuser } from "../Actions/useraction";
 import "./Navbar.css";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Nav as navlink, NavItem } from "react-bootstrap";
+import {
+  Dropdown,
+  DropdownButton,
+  Nav as navlink,
+  NavItem,
+} from "react-bootstrap";
 
 function Nav() {
   const dispatch = useDispatch();
@@ -14,7 +19,7 @@ function Nav() {
   }
   const UserState = useSelector((state) => state.loginUserReducer);
   const { current_user } = UserState;
-  // console.log(current_user.role);
+  // console.log(current_user.name);
   useEffect(() => {
     if (current_user != null) {
       if (current_user.role === "student") {
@@ -26,53 +31,54 @@ function Nav() {
   });
 
   return (
-    <div className="Navbar h-14 bg-slate-400 flex text-black ">
-      <div className="Nav flex mt-4 grow ">
-        <navlink.Link className="cursor-pointer" href="/home">
+    <div className="Navbar h-14 nav-color flex">
+      <div className="Nav flex mt-2 flex-1">
+        <navlink.Link
+          className="cursor-pointer text-white text-md "
+          href="/home"
+        >
           Home
         </navlink.Link>
         {current_user == null ? (
           <navlink.Link
             href="/studentlogin"
-            className="mr-4 cursor-pointer student-route"
+            className="cursor-pointer student-route text-white text-md"
           >
             Student
           </navlink.Link>
         ) : null}
         {current_user == null ? (
-          <navlink.Link href="/teacherlogin" className="teacher-route">
+          <navlink.Link
+            href="/teacherlogin"
+            className="teacher-route text-white text-md"
+          >
             Teacher
           </navlink.Link>
         ) : null}
-
-        {current_user == null ? null : (
-          <navlink.Link onClick={logoutUser} className="logout">
-            logout
-          </navlink.Link>
-        )}
         {current_user != null ? (
-          <navlink.Link href="/teacherscreen" className="all-course">
+          <navlink.Link
+            href="/teacherscreen"
+            className="all-course text-white text-md"
+          >
             All courses
           </navlink.Link>
         ) : null}
-        {teacher ? (
-          <navlink.Link href="/addcourse" className="add-course">
-            Add course
-          </navlink.Link>
+
+        {current_user != null ? (
+          <DropdownButton
+            id="dropdown-basic-button"
+            title={current_user.name}
+            align="end"
+          >
+            {current_user == null ? null : (
+              <Dropdown.Item onClick={logoutUser}>Logout</Dropdown.Item>
+            )}
+            {teacher ? (
+              <Dropdown.Item href="/addcourse">Add Course</Dropdown.Item>
+            ) : null}
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          </DropdownButton>
         ) : null}
-        <div className="dropdown">
-          <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item>
-          </NavDropdown>
-        </div>
       </div>
     </div>
   );

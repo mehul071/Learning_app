@@ -30,6 +30,7 @@ export const getcourseReducer = (state = { courses: [] }, action) => {
     case "GET_COURSES_FAILED":
       return {
         loading: false,
+        success: false,
         error: action.payload,
       };
     case "GET_COURSES_SUCCESS":
