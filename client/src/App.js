@@ -1,5 +1,5 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar";
+import Header from "./Components/Header";
 import Studentlogin from "./Screens/student/Studentlogin";
 import Teacherlogin from "./Screens/teacher/Teacherlogin";
 import StudnetRegister from "./Screens/student/StudentRegistration";
@@ -15,7 +15,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Header />
       <BrowserRouter>
         <Route path="/home" exact component={HomeScreen} />
         <Route path="/teacherlogin" exact component={Teacherlogin} />

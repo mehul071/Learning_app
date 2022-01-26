@@ -31,7 +31,7 @@ function Editcoursescreen() {
       alert("Enter the course Name and details");
     } else {
       try {
-        console.log(course_name, description, courseId);
+        // console.log(course_name, description, courseId);
         const response = await axios.post("/api/course/update", {
           id: courseId,
           course_name,

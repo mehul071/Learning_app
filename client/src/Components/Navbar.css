@@ -1,3 +1,25 @@
 a{
     color:black !important;
 }
+.dropdown{
+    display: none;
+}
+@media screen and (max-width:700px)
+{
+    .dropdown{
+        display:flex;
+        text-align: end;
+    }
+    .teacher-route{
+        display: none !important;
+    }
+    .student-route{
+        display: none !important;
+    }
+    .add-course{
+        display: none !important;
+    }
+    .logout{
+        display: none !important;
+    }
+}

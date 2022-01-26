@@ -38,7 +38,6 @@ export const getcourseReducer = (state = { courses: [] }, action) => {
         success: true,
         courses: action.payload,
       };
-
     default:
       return state;
   }

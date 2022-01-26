@@ -11,6 +11,9 @@ function StudentRegistration() {
 
   const dispatch = useDispatch();
   function registerUser() {
+    if (name === "" || email === "") {
+      alert("Enter Name and email correctly");
+    }
     if (password !== confirmPass) {
       alert("Password doesn't match");
     } else {
