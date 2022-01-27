@@ -25,7 +25,7 @@ function Editcoursescreen() {
     }
 
     fetchByid();
-  });
+  }, []);
   async function handleEdit() {
     if (course_name === "" || description === "") {
       alert("Enter the course Name and details");
@@ -37,6 +37,7 @@ function Editcoursescreen() {
           course_name,
           description,
         });
+        alert("updated");
       } catch (error) {
         console.log("error is coming" + error);
       }

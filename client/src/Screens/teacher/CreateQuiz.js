@@ -109,7 +109,9 @@ function CreateQuiz() {
         <div>
           {/* {quizlen.quiz > 0 ? null : ( */}
           {/* <> */}
-          <Button onClick={showquiz}>Create Quiz</Button>
+          <Button onClick={showquiz} className="mr-4">
+            Create Quiz
+          </Button>
           <Modal
             show={showquizmodal}
             onHide={closequizmodal}
