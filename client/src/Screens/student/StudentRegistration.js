@@ -86,9 +86,12 @@ function StudentRegistration() {
             }}
           />
         </FloatingLabel>
-        <Button className="signin_btn border" onClick={registerUser}>
+        <button
+          className="signin_btn  border-4 bg-black text-white"
+          onClick={registerUser}
+        >
           Register
-        </Button>
+        </button>
         <span className="mt-2 redirect_login hover:underline mb-2">
           <a href="/login">Back to Login</a>
         </span>

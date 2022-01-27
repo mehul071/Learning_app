@@ -44,9 +44,13 @@ function Teacherlogin() {
             }}
           />
         </FloatingLabel>
-        <Button variant="primary" onClick={login} className="mt-4">
+        <button
+          variant="primary"
+          onClick={login}
+          className="mt-4 border-4 text-white bg-black"
+        >
           Sign in
-        </Button>
+        </button>
         <p className="new_account ">
           Don't have an account?
           <a

@@ -109,9 +109,12 @@ function CreateQuiz() {
         <div>
           {/* {quizlen.quiz > 0 ? null : ( */}
           {/* <> */}
-          <Button onClick={showquiz} className="mr-4">
+          <button
+            onClick={showquiz}
+            className="mr-4 bg-black text-white px-2 py-2"
+          >
             Create Quiz
-          </Button>
+          </button>
           <Modal
             show={showquizmodal}
             onHide={closequizmodal}
@@ -138,16 +141,30 @@ function CreateQuiz() {
               />
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" onClick={callcreatequizfunctions}>
+              <button
+                variant="primary"
+                className="bg-black text-white px-2 py-2"
+                onClick={callcreatequizfunctions}
+              >
                 Add New Quiz
-              </Button>
-              <Button onClick={closequizmodal}>Close</Button>
+              </button>
+              <button
+                onClick={closequizmodal}
+                className="bg-black text-white px-2 py-2"
+              >
+                Close
+              </button>
             </Modal.Footer>
           </Modal>
           {/* </> */}
           {/* )} */}
 
-          <Button onClick={handleShow}>Add Question</Button>
+          <button
+            className="bg-black text-white px-2 py-2"
+            onClick={handleShow}
+          >
+            Add Question
+          </button>
         </div>
 
         <Modal
@@ -226,12 +243,20 @@ function CreateQuiz() {
             </Modal.Body>
           </div>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <button
+              variant="secondary"
+              className="bg-black text-white px-2 py-2"
+              onClick={handleClose}
+            >
               Close
-            </Button>
-            <Button variant="primary" onClick={callquestionfunctions}>
+            </button>
+            <button
+              variant="primary"
+              className="bg-black text-white px-2 py-2"
+              onClick={callquestionfunctions}
+            >
               AddQuestion
-            </Button>
+            </button>
           </Modal.Footer>
         </Modal>
       </div>

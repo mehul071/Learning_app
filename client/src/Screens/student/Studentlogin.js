@@ -46,13 +46,13 @@ function Studentlogin() {
             }}
           />
         </FloatingLabel>
-        <Button
-          className="signin_btn border-2 w-15 mb-4 py-1 px-2"
+        <button
+          className="signin_btn border-2 w-15 mb-4 py-1 px-2 border-4 hover:bg-black hover:text-white"
           onClick={login}
           variant="primary"
         >
           Sign in
-        </Button>
+        </button>
 
         <p className="new_account ">
           Don't have an account?

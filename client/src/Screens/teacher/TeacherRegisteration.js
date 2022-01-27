@@ -73,9 +73,12 @@ function TeacherRegisteration() {
             setconfirmPass(e.target.value);
           }}
         />
-        <Button className="signin_btn border" onClick={registerUser}>
+        <button
+          className="signin_btn border bg-black text-white"
+          onClick={registerUser}
+        >
           Register
-        </Button>
+        </button>
         <p className="mt-2 redirect_login hover:underline mb-2">
           <a href="/login">Back to Login</a>
         </p>
