@@ -20,7 +20,7 @@ export const AddcourseReducer = (state = {}, action) => {
       return state;
   }
 };
-export const getcourseReducer = (state = { courses: [] }, action) => {
+export const getcourseReducer = (state = {}, action) => {
   switch (action.type) {
     case "GET_COURSES_REQUEST":
       return {

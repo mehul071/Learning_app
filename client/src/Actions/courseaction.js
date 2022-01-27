@@ -17,6 +17,7 @@ export const getallcourse = () => async (dispatch) => {
     const response = await axios.get("/api/course/getallcourses");
     // console.log(response);
     dispatch({ type: "GET_COURSES_SUCCESS", payload: response.data });
+    localStorage.setItem("courses", JSON.stringify(response.data));
   } catch (error) {
     dispatch({ type: "GET_COURSES_FAILED", payload: error });
   }

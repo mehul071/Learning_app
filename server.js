@@ -1,5 +1,6 @@
 const express = require("express");
 const db = require("./db");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,11 @@ app.use("/api/question/", questionRoute);
 app.use("/api/quiz/", quizRoute);
 app.use("/api/course/", courseRoute);
 app.use("/api/users/", userRoute);
+
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.get("/", (req, res) => {
   res.send("this is working");

@@ -1,9 +1,17 @@
 .fotter{
-    position: absolute;
+    /* position: sticky;
     bottom:0;
     left:0;
     height: 42px;
-    background-color: #1F2937;
+    background-color: #;
     right:0;
+    margin-bottom: -2px; */
     /* display: fixed; */
+    position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #1F2937;
+   color: white;
+   text-align: center;
 }

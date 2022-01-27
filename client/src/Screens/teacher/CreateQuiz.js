@@ -19,6 +19,7 @@ function CreateQuiz() {
   const [answer1, setAnswer1] = useState("");
   const [marks, setMarks] = useState("");
   const [quizName, setQuizName] = useState("");
+  const [passingMarks, setpassingMarks] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -29,7 +30,7 @@ function CreateQuiz() {
   }, []);
   const courseState = useSelector((state) => state.getcourseReducer);
   const { courses, loading, success } = courseState;
-  //   console.log(courses);
+  console.log(courses);
   var id = useParams();
   var quiz__id;
   async function addquestion() {
@@ -67,6 +68,7 @@ function CreateQuiz() {
         id,
         quiz_id: quizid,
         Quizname: quizName,
+        passingMarks: passingMarks,
       });
       alert("Quiz created");
       console.log(response);
@@ -97,11 +99,16 @@ function CreateQuiz() {
     await getquizid();
     addquestion();
   }
+  // console.log(id);
+  // const quizlen = courses.find((course) => id.courseid === course.course_id);
+  // console.log();
   return (
     <div className="">
       <div className="">
         <h1 className="text-center">Quiz</h1>
         <div>
+          {/* {quizlen.quiz > 0 ? null : ( */}
+          {/* <> */}
           <Button onClick={showquiz}>Create Quiz</Button>
           <Modal
             show={showquizmodal}
@@ -112,14 +119,20 @@ function CreateQuiz() {
             <Modal.Header closeButton>
               <Modal.Title>Add quiz</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className="flex flex-col">
               <input
                 placeholder="Enter Quiz name"
                 value={quizName}
-                className="border-2"
+                className="border-2 px-2 py-1"
                 onChange={(e) => {
                   setQuizName(e.target.value);
                 }}
+              />
+              <input
+                placeholder="Passing Marks"
+                value={passingMarks}
+                className="mt-2 border-2 px-2 py-1"
+                onChange={(e) => setpassingMarks(e.target.value)}
               />
             </Modal.Body>
             <Modal.Footer>
@@ -129,6 +142,9 @@ function CreateQuiz() {
               <Button onClick={closequizmodal}>Close</Button>
             </Modal.Footer>
           </Modal>
+          {/* </> */}
+          {/* )} */}
+
           <Button onClick={handleShow}>Add Question</Button>
         </div>
 

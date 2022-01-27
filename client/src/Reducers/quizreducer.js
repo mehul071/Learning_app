@@ -36,6 +36,7 @@ export const getallquestionsReducer = (state = {}, action) => {
     case "GET_QUESTIONS_FAILED":
       return {
         loading: false,
+        success: false,
         error: action.payload,
       };
     default:

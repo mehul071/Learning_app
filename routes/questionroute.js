@@ -49,12 +49,21 @@ router.post("/getallquestions", async (req, res) => {
 
 router.post("/getallques", async (req, res) => {
   var course_id = req.body.id.courseid;
-  console.log(course_id);
+  // console.log(course_id);
   try {
     const response = await NewQuestion.find({ course_id });
     res.send(response);
   } catch (error) {
     return res.status(400).json({ message: error });
   }
+});
+
+router.post("/getanswer", async (req, res) => {
+  const { questionId } = req.body;
+  try {
+    const response = await NewQuestion.find({ questionId });
+    console.log();
+    res.send(response[0].answer);
+  } catch (error) {}
 });
 module.exports = router;

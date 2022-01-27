@@ -55,9 +55,17 @@ function Nav() {
             Teacher
           </navlink.Link>
         ) : null}
-        {current_user != null ? (
+        {current_user != null && teacher ? (
           <navlink.Link
             href="/teacherscreen"
+            className="all-course text-white text-md"
+          >
+            All courses
+          </navlink.Link>
+        ) : null}
+        {current_user != null && student ? (
+          <navlink.Link
+            href="/studentscreen"
             className="all-course text-white text-md"
           >
             All courses
@@ -76,7 +84,6 @@ function Nav() {
             {teacher ? (
               <Dropdown.Item href="/addcourse">Add Course</Dropdown.Item>
             ) : null}
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
           </DropdownButton>
         ) : null}
       </div>
