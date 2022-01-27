@@ -11,7 +11,7 @@ const { v4: uuidv4 } = require("uuid");
 function CreateQuiz() {
   const [show, setShow] = useState(false);
   const [showquizmodal, setShowQuizModal] = useState(false);
-  const [question, setQuestion] = useState("");
+  const [questions, setQuestion] = useState("");
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
@@ -45,7 +45,7 @@ function CreateQuiz() {
       var questionId = uuidv4();
       console.log(id);
       var question = {
-        question: question,
+        question: questions,
         questionId,
         quizId: quiz__id,
         marks: marks,
@@ -146,7 +146,7 @@ function CreateQuiz() {
               <input
                 placeholder="Enter Question"
                 className="border-2 mb-2 px-2 py-1"
-                value={question}
+                value={questions}
                 onChange={(e) => {
                   setQuestion(e.target.value);
                 }}

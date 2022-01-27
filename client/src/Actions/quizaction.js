@@ -10,3 +10,17 @@ export const addquestions = (question) => async (dispatch) => {
     dispatch({ type: "NEW_QUESTION_FAILED", payload: error });
   }
 };
+
+export const getallquestions = (courseId) => async (dispatch) => {
+  dispatch({ type: "GET_QUESTIONS_REQUEST" });
+
+  try {
+    const response = await axios.post("/api/question/getallques", {
+      id: courseId,
+    });
+    // console.log(response);
+    dispatch({ type: "GET_QUESTIONS_SUCCESS", payload: response.data });
+  } catch (error) {
+    dispatch({ type: "GET_QUESTIONS_FAILED", payload: error });
+  }
+};

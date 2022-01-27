@@ -11,7 +11,7 @@ import EditCourse from "./Screens/teacher/Editcoursescreen";
 import HomeScreen from "./Screens/HomeScreen";
 import Quiz from "./Screens/teacher/CreateQuiz";
 import Fotter from "./Components/Fotter";
-import Student from "./Components/StudentQuiz";
+import StudentQuiz from "./Screens/student/StudentQuiz";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 

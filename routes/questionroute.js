@@ -46,4 +46,15 @@ router.post("/getallquestions", async (req, res) => {
     return res.status(400).json({ message: error });
   }
 });
+
+router.post("/getallques", async (req, res) => {
+  var course_id = req.body.id.courseid;
+  console.log(course_id);
+  try {
+    const response = await NewQuestion.find({ course_id });
+    res.send(response);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
 module.exports = router;
