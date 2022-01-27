@@ -13,6 +13,7 @@ import Quiz from "./Screens/teacher/CreateQuiz";
 import Fotter from "./Components/Fotter";
 import StudentQuiz from "./Screens/student/StudentQuiz";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.js";
 import "./App.css";
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
       <Header />
       <BrowserRouter>
-        <Route path="/home" exact component={HomeScreen} />
+        <Route path="/" exact component={HomeScreen} />
         <Route path="/teacherlogin" exact component={Teacherlogin} />
         <Route path="/studentlogin" exact component={Studentlogin} />
         <Route path="/Studentregister" exact component={StudnetRegister} />
