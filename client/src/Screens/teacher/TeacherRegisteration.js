@@ -11,9 +11,6 @@ function TeacherRegisteration() {
 
   const dispatch = useDispatch();
   function registerUser() {
-    if (teachername === "" || teacheremail === "" || password) {
-      alert("Enter Name and email correctly");
-    }
     if (password !== confirmPass) {
       alert("Password doesn't match");
     } else {
